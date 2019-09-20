@@ -1,0 +1,38 @@
+language: java
+dist: trusty
+jdk:
+  - oraclejdk8
+env:
+  - NODE_VERSION="10"
+before_install:
+  - nvm install $NODE_VERSION
+
+jobs:
+  include:
+    - stage: ui
+      before_script: npm install -g @angular/cli@8.0.3
+      script:
+        - cd ui && ng lint && npm run test-headless
+    - stage: backend
+      script: ./gradlew build -s
+      before_deploy: git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file: build/libs/social-playlist-0.0.1-SNAPSHOT.jar
+        skip_cleanup: true
+        on:
+          repo: lakermann/social-playlist
+    - stage: doc
+      install: cd docs && npm install
+      script: cd docs && npm run docs:build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        local_dir: docs/docs/.vuepress/dist
+        github-token: $GITHUB_TOKEN
+        repo: lakermann/social-playlist
+        keep-history: false
+        target-branch: gh-pages
+        on:
+          branch: master
