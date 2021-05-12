@@ -1,4 +1,4 @@
-# Building a Web Application with Spring Boot and Angular [![Build Status](https://travis-ci.org/lakermann/social-playlist.svg?branch=master)](https://travis-ci.org/lakermann/social-playlist)
+# Building a Web Application with Spring Boot and Angular [![Build](https://github.com/lakermann/social-playlist/actions/workflows/build.yml/badge.svg)](https://github.com/lakermann/social-playlist/actions/workflows/build.yml)
 
 _by [Etienne Fux](http://github.com/efux) and [Lukas Akermann](https://github.com/lakermann)_
 
