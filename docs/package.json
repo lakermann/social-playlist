@@ -1,12 +1,20 @@
 {
+  "name": "social-playlist",
+  "version": "0.0.1",
+  "description": "Springboot & Angular Hands-on Workshop",
+  "main": "index.js",
+  "authors": {
+    "name": "Lukas Akermann"
+  },
+  "repository": "https://github.com/lakermann/social-playlist",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
   },
+  "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.0.1"
-  },
-  "dependencies": {
-    "markdown-it-footnote": "^3.0.1"
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "markdown-it-footnote": "^3.0.2",
+    "vuepress": "^1.5.3"
   }
 }
